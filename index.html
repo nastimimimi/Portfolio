@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nastya Baranova — Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="cur">✦</div>
+
+<div id="app">
+
+  <!-- nav -->
+  <nav>
+    <span class="nav-logo" @click="showPage('home')">Nastya Baranova</span>
+    <ul class="nav-links">
+      <li><a @click="showPage('home')">Home</a></li>
+      <li><a @click="showPage('about')">About</a></li>
+      <li><a @click="showPage('projects')">Projects</a></li>
+      <li><a @click="showPage('skills')">Skills</a></li>
+      <li><a @click="showPage('reviews')">Reviews</a></li>
+      <li><a @click="showPage('contact')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- home page -->
+  <div id="home" class="page" :class="{ active: currentPage === 'home' }">
+    <div class="home-wrap">
+      <div class="home-left">
+        <div class="home-tag"><span>Open for business</span></div>
+        <h1 class="home-name">Nastya<br><em>Baranova</em></h1>
+        <p class="home-sub">// Full-Stack & iOS Developer · Odessa, Ukraine</p>
+        <p class="home-bio">I'm a 19-year-old full-stack developer from Odessa, Ukraine. I build practical software — web apps, iOS applications, and desktop tools — with a strong interest in AI and computer vision.</p>
+        <div class="home-facts">
+          <div class="fact-row"><span class="fl">Education</span>OPNU — Computer Science, 2023–2027</div>
+          <div class="fact-row"><span class="fl">Stack</span>Python · Swift · JavaScript · SwiftUI</div>
+          <div class="fact-row"><span class="fl">Focus</span>AI · WebDev · iOS Dev</div>
+          <div class="fact-row"><span class="fl">Rate</span>$8.00 / hr <b>(negotiable)</b></div>
+        </div>
+        <div class="home-btns">
+          <span class="btn-p" @click="showPage('projects')">View Projects</span>
+          <span class="btn-s" @click="showPage('contact')">Contact Me</span>
+        </div>
+      </div>
+
+      <div class="home-photo-col">
+        <div class="photo-rings">
+          <div class="ring2"></div>
+          <div class="ring1"></div>
+          <img class="home-photo" src="photo.jpg"  alt="Nastya Baranova">
+          <div class="photo-badge">
+            <small>Based in</small>
+            <strong>Odessa, Ukraine 🌸</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- about -->
+  <div id="about" class="page" :class="{ active: currentPage === 'about' }">
+    <div class="sec">
+      <div class="sec-label reveal"><span class="sl-num">01</span><span class="sl-txt">About me</span><div class="sl-line"></div></div>
+      <h2 class="sec-title reveal">Hello, I'm <em>Nastya</em></h2>
+      <div class="about-grid">
+        <div>
+          <div class="about-text reveal">
+            <p>I'm a <b>full-stack developer</b> based in Odessa, Ukraine, passionate about building software that solves real problems. At 19, I've already shipped projects spanning AI, mobile, desktop, and embedded systems.</p>
+            <p>I specialise in <b>iOS development</b> — building native apps with Swift and SwiftUI. I also work on <b>web applications</b> and enjoy creating tools that automate real workflows across different platforms.</p>
+            <p>In my third year of <i>Computer Science</i>, actively taking on freelance projects and looking for opportunities to work on something meaningful.</p>
+          </div>
+          <div class="info-grid reveal">
+            <div class="ic"><div class="ic-lbl">Birthday</div><div class="ic-val">20 July 2006</div></div>
+            <div class="ic"><div class="ic-lbl">Location</div><div class="ic-val">Odessa, Ukraine</div></div>
+            <div class="ic"><div class="ic-lbl">Degree</div><div class="ic-val">BASc Computer Science</div></div>
+            <div class="ic"><div class="ic-lbl">Freelance rate</div><div class="ic-val">$8.00 / hr <b>(negotiable)</b></div></div>
+          </div>
+        </div>
+        <div class="about-right reveal">
+          <p class="block-h">Languages</p>
+          <div class="lang-list">
+            <div class="lang-row"><span class="lang-name">English</span><span class="lang-badge">Fluent</span></div>
+            <div class="lang-row"><span class="lang-name">Russian</span><span class="lang-badge">Native</span></div>
+            <div class="lang-row"><span class="lang-name">Ukrainian</span><span class="lang-badge">Native</span></div>
+            <div class="lang-row"><span class="lang-name">French</span><span class="lang-badge">Fluent</span></div>
+            <div class="lang-row"><span class="lang-name">Portuguese</span><span class="lang-badge">Conversational</span></div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-lbl">Education</div>
+            <div class="edu-school">Odessa Polytechnic National University</div>
+            <div class="edu-deg">Bachelor of Applied Science — Computer Science</div>
+            <div class="edu-yr">2023 — 2027 (expected)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- projects -->
+  <div id="projects" class="page" :class="{ active: currentPage === 'projects' }">
+    <div class="sec">
+      <div class="sec-label reveal"><span class="sl-num">02</span><span class="sl-txt">Selected work</span><div class="sl-line"></div></div>
+      <h2 class="sec-title reveal">My <em>Projects</em></h2>
+      <div class="proj-grid reveal">
+        <div class="proj-card" v-for="(p, i) in PROJECTS" :key="i" @click="showProject(i)">
+          <div class="proj-date">{{ p.period }}</div>
+          <div class="proj-num">{{ p.num }}</div>
+          <h3 class="proj-title">{{ p.title }}</h3>
+          <p class="proj-desc">{{ p.desc }}</p>
+          <div class="proj-tags">
+            <span class="tag" v-for="t in p.stack.slice(0,3)" :key="t">{{ t }}</span>
+          </div>
+          <button class="proj-btn">View project →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- project detail -->
+  <div id="project-detail" class="page" :class="{ active: currentPage === 'project-detail' }">
+    <div class="det-wrap" v-if="currentProject">
+      <button class="back-btn" @click="backToProjects()">Back to Projects</button>
+      <div class="det-eyebrow">{{ currentProject.eyebrow }}</div>
+      <h1 class="det-title">{{ currentProject.title }}</h1>
+      <div class="det-meta">
+        <div class="det-meta-item"><strong>{{ currentProject.period }}</strong><span>Timeline</span></div>
+        <div class="det-meta-item"><strong>{{ currentProject.type }}</strong><span>Type</span></div>
+      </div>
+      <div class="det-grid">
+        <div class="det-body">
+          <p>{{ currentProject.desc }}</p>
+          <p>{{ currentProject.detail }}</p>
+          <div class="img-grid">
+            <div class="img-ph" v-for="img in currentProject.images" :key="img.label" @click="openLightbox(img.note)">
+              <em>{{ img.label }}</em>
+              <span v-html="img.note"></span>
+            </div>
+          </div>
+          <h3>Key Features</h3>
+          <ul class="feat-list">
+            <li v-for="h in currentProject.highlights" :key="h">{{ h }}</li>
+          </ul>
+        </div>
+        <div>
+          <div class="side-card">
+            <div class="sc-lbl">Tech Stack</div>
+            <div class="sc-tags">
+              <span class="tag" v-for="t in currentProject.stack" :key="t">{{ t }}</span>
+            </div>
+          </div>
+          <div class="side-card">
+            <div class="sc-lbl">Project Info</div>
+            <div class="sc-row"><span class="k">Period</span><span class="v">{{ currentProject.period }}</span></div>
+            <div class="sc-row"><span class="k">Type</span><span class="v">{{ currentProject.type }}</span></div>
+            <div class="sc-row"><span class="k">Author</span><span class="v">Nastya Baranova</span></div>
+          </div>
+          <div class="side-card">
+            <div class="sc-lbl">Repository</div>
+            <a v-if="currentProject.hasGithub" :href="currentProject.github" target="_blank" class="gh-link">
+              GitHub Repository <span>↗</span>
+            </a>
+            <div v-else class="na-badge">Not publicly available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- skills -->
+  <div id="skills" class="page" :class="{ active: currentPage === 'skills' }">
+    <div class="sec">
+      <div class="sec-label reveal"><span class="sl-num">03</span><span class="sl-txt">Expertise</span><div class="sl-line"></div></div>
+      <h2 class="sec-title reveal">Tech <em>Skills</em></h2>
+      <div class="skills-layout">
+        <div class="about-text reveal">
+          <p>I work across the full stack — web, iOS, desktop, ML pipelines. Always learning, always building.</p>
+          <p style="margin-top:1.4rem">It doesn't matter whether the task is clear or not — I'll figure it out. I ask questions, suggest alternatives, and if the first approach doesn't work, we find another one. The primary goal isn't just to get the code to work, but to achieve a high-quality result and a fully functional product.</p>
+        </div>
+        <div class="skills-cols reveal">
+          <div><div class="sg-title">Programming</div><ul class="sk-list"><li>Python</li><li>Swift &amp; SwiftUI</li><li>JavaScript</li><li>HTML &amp; CSS</li></ul></div>
+          <div><div class="sg-title">Domains</div><ul class="sk-list"><li>Web Development</li><li>iOS Development</li><li>Desktop Apps</li><li>Machine Learning</li><li>Computer Vision</li><li>Telegram Bots</li></ul></div>
+          <div><div class="sg-title">Tools</div><ul class="sk-list"><li>Database Design</li><li>Algorithm Development</li><li>Embedded</li><li>Server Development</li></ul></div>
+          <div><div class="sg-title">Soft Skills</div><ul class="sk-list"><li>Problem Solving</li><li>Full-Stack Architecture</li><li>Project Management</li><li>5 Languages spoken</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- reviews -->
+  <div id="reviews" class="page" :class="{ active: currentPage === 'reviews' }">
+    <div class="sec">
+      <div class="sec-label reveal"><span class="sl-num">04</span><span class="sl-txt">What people say</span><div class="sl-line"></div></div>
+      <h2 class="sec-title reveal">Client <em>Reviews</em></h2>
+      <div class="reviews-outer reveal">
+        <div class="reviews-track" id="reviews-track"></div>
+      </div>
+
+      <!-- Leave a review -->
+      <div class="review-form-wrap reveal">
+        <div class="review-form-left">
+          <h3 class="review-form-title">Worked with me?<br><em>Leave a review</em></h3>
+          <p class="review-form-sub">I read every review personally. Thank you for taking the time, your feedback helps others find the right developer 🌸</p>
+        </div>
+        <form class="review-form" @submit.prevent="submitReview">
+          <div class="rf-row">
+            <input type="text" v-model="rvName" placeholder="Your name" required>
+            <input type="text" v-model="rvRole" placeholder="Your field">
+          </div>
+          <div class="rf-stars">
+            <span
+              v-for="n in 5" :key="n"
+              class="rf-star"
+              :class="{ active: n <= rvStars, hover: n <= rvHover }"
+              @mouseover="rvHover = n"
+              @mouseleave="rvHover = 0"
+              @click="rvStars = n"
+            >✦</span>
+            <span class="rf-star-hint">{{ rvStars ? rvStarLabel : 'Rate your experience' }}</span>
+          </div>
+          <textarea v-model="rvText" placeholder="Share your experience working with Nastya..." required></textarea>
+          <div class="rf-bottom">
+            <button type="submit" class="btn-p">Send Review</button>
+            <p class="rv-status">{{ rvStatus }}</p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- contact -->
+  <div id="contact" class="page" :class="{ active: currentPage === 'contact' }">
+    <div class="sec">
+      <div class="sec-label reveal"><span class="sl-num">05</span><span class="sl-txt">Get in touch</span><div class="sl-line"></div></div>
+      <h2 class="sec-title reveal">Let's <em>work<br>together</em></h2>
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="c-desc">Open to freelance projects, internships, and full-time opportunities. Fill the form — I'll get your message directly in Telegram!</p>
+          <form class="tg-form" @submit.prevent="sendTelegram">
+            <input type="text" v-model="tgName" placeholder="Your name" required>
+            <input type="text" v-model="tgContact" placeholder="Your email or Telegram">
+            <textarea v-model="tgMsg" placeholder="Tell me about your project..." required></textarea>
+            <button type="submit" class="tg-submit">Send Message</button>
+            <p class="tg-msg">{{ tgStatus }}</p>
+          </form>
+        </div>
+        <div class="c-info reveal">
+          <div class="ci-item"><div class="ci-lbl">Location</div><div class="ci-val">Odessa, Ukraine</div></div>
+          <div class="ci-item"><div class="ci-lbl">Rate</div><div class="ci-val">$8.00 / hour</div></div>
+          <div class="ci-item"><div class="ci-lbl">Available for</div><div class="ci-val">Freelance · Internship · Full-time</div></div>
+          <div class="ci-item"><div class="ci-lbl">Response time</div><div class="ci-val">Within 24 hours</div></div>
+          <div class="c-links">
+            <a href="mailto:schoo10.nasia@gmail.com" class="c-link"><span>schoo10.nasia@gmail.com</span><span>↗</span></a>
+            <a href="https://github.com/nastimimimi" target="_blank" class="c-link"><span>GitHub</span><span>↗</span></a>
+            <a href="https://www.instagram.com/_nass.tti_?igsh=OTZiMm13d3UweWlh&utm_source=qr" target="_blank" class="c-link"><span>Instagram</span><span>↗</span></a>
+            <a href="https://t.me/nnasstti" target="_blank" class="c-link"><span>Telegram</span><span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Nastya Baranova</p>
+    <p>Full-Stack & iOS Developer · Odessa, Ukraine</p>
+  </footer>
+
+ <!-- lightbox -->
+  <div class="lightbox" v-if="lightboxSrc" @click="lightboxSrc = null">
+    <div class="lightbox-inner">
+      <span class="lightbox-close" @click.stop="lightboxSrc = null">✕</span>
+      <img :src="lightboxSrc" alt="">
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
