@@ -381,63 +381,100 @@ footer p { font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: rg
 
 /* Responsive */
 @media (max-width: 960px) {
-  /* Nav — hamburger-style, все ссылки мелкие */
+  /* Prevent horizontal overflow */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+
+  /* Nav */
   nav {
-    padding: 1rem 1.2rem;
+    padding: .8rem 1rem;
     flex-wrap: wrap;
-    gap: .5rem;
+    gap: .4rem;
+    position: fixed;
   }
-  .nav-logo { font-size: 1rem; }
+  .nav-logo { font-size: .95rem; width: 100%; }
   .nav-links {
     display: flex;
     flex-wrap: wrap;
-    gap: .3rem .8rem;
-    justify-content: center;
+    gap: .25rem .6rem;
+    justify-content: flex-start;
     width: 100%;
-    padding: .4rem 0;
   }
-  .nav-links a { font-size: .62rem; letter-spacing: .04em; }
+  .nav-links a { font-size: .68rem; letter-spacing: .03em; }
 
-  /* Home */
+  /* Home — фото сверху, текст снизу */
   .home-wrap {
-    grid-template-columns: 1fr;
-    padding: 100px 1.5rem 3rem;
-    text-align: center;
-    gap: 2rem;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 100px 1.2rem 3rem !important;
+    text-align: center !important;
+    gap: 1.5rem !important;
+    min-height: 100vh !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
   }
-  .home-photo-col { order: -1; justify-content: center; }
-  .photo-rings { width: 240px; height: 240px; }
-  .ring1 { width: 220px; height: 220px; }
-  .ring2 { width: 260px; height: 260px; }
-  .home-photo { width: 190px; height: 230px; }
+  .home-left {
+    width: 100% !important;
+    max-width: 100% !important;
+    order: 2 !important;
+  }
+  .home-photo-col {
+    order: 1 !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .photo-rings { width: 220px; height: 220px; }
+  .ring1 { width: 200px; height: 200px; }
+  .ring2 { width: 240px; height: 240px; }
+  .home-photo { width: 175px; height: 210px; }
   .photo-badge {
-    bottom: -14px;
+    bottom: -12px;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
+    font-size: .85rem;
   }
-  .home-name { font-size: 3rem; }
-  .home-bio { margin: 0 auto 1.5rem; max-width: 100%; }
-  .home-facts { align-items: center; }
-  .fact-row { justify-content: center; }
-  .home-btns { justify-content: center; flex-wrap: wrap; }
+  .home-name { font-size: 2.8rem; }
+  .home-sub { font-size: .75rem; }
+  .home-bio { width: 100%; max-width: 100%; margin-bottom: 1.2rem; font-size: .95rem; }
+  .home-facts { align-items: center; width: 100%; }
+  .fact-row { justify-content: center; font-size: .85rem; }
+  .home-btns { justify-content: center; flex-wrap: wrap; width: 100%; }
 
   /* Sections */
-  .sec { padding: 4rem 1.5rem; }
+  .sec { padding: 4rem 1.2rem; max-width: 100vw; box-sizing: border-box; }
   .about-grid,
   .det-grid,
   .skills-layout,
-  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
   .proj-grid { grid-template-columns: 1fr; }
   .skills-cols { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .det-meta { flex-wrap: wrap; gap: .8rem; }
   .img-grid { grid-template-columns: 1fr; }
 
-  footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: .4rem; text-align: center; width: 100%; }
+  /* Footer */
+  footer {
+    padding: 1.2rem 1.2rem !important;
+    flex-direction: column !important;
+    gap: .4rem !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
 }
 
 @media (max-width: 480px) {
-  .nav-links a { font-size: .58rem; }
+  .nav-links a { font-size: .62rem; }
+  .home-name { font-size: 2.3rem; }
+  .sec-title { font-size: 1.9rem; }
+  .skills-cols { grid-template-columns: 1fr; }
+  .proj-card { padding: 1.5rem; }
+  .home-btns { flex-direction: column; align-items: center; }
+  .btn-p, .btn-s { width: 100%; text-align: center; box-sizing: border-box; }
+  .home-facts .fact-row { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+}
   .home-name { font-size: 2.5rem; }
   .sec-title { font-size: 2rem; }
   .skills-cols { grid-template-columns: 1fr; }
