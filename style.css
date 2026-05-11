@@ -381,6 +381,7 @@ footer p { font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: rg
 
 /* Responsive */
 @media (max-width: 960px) {
+<<<<<<< HEAD
   /* Nav — hamburger-style, все ссылки мелкие */
   nav {
     padding: 1rem 1.2rem;
@@ -444,6 +445,23 @@ footer p { font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: rg
   .proj-card { padding: 1.8rem; }
   .home-btns { flex-direction: column; align-items: center; }
   .btn-p, .btn-s { width: 100%; text-align: center; }
+=======
+  nav { padding: 1.2rem 2rem; }
+  .home-wrap { grid-template-columns: 1fr; padding: 90px 2rem 3rem; text-align: center; }
+  .home-photo-col { order: -1; }
+  .photo-rings { width: 280px; height: 280px; }
+  .ring1 { width: 260px; height: 260px; }
+  .ring2 { width: 300px; height: 300px; }
+  .home-photo { width: 220px; height: 265px; }
+  .home-facts { align-items: center; }
+  .fact-row { flex-direction: column; gap: 2px; text-align: center; }
+  .home-btns { justify-content: center; }
+  .home-bio { margin: 0 auto 2rem; }
+  .sec { padding: 5rem 2rem; }
+  .about-grid, .det-grid, .skills-layout, .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .proj-grid { grid-template-columns: 1fr; }
+  footer { padding: 1.3rem 2rem; flex-direction: column; gap: .4rem; }
+>>>>>>> 28c90a641142c3987f116badc5f66c40920d7fb6
 }
 
 /* Review */
