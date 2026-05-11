@@ -369,7 +369,7 @@ nav {
 .c-link:hover { border-color: rgba(212,168,152,.42); color: #fff; }
 .c-link > * { position: relative; z-index: 1; }
 
-footer { background: #2e1420; padding: 1.6rem 5rem; display: flex; justify-content: space-between; border-top: 1px solid rgba(212,168,152,.1); }
+footer { background: #2e1420; padding: 1.6rem 5rem; display: flex; justify-content: space-between; border-top: 1px solid rgba(212,168,152,.1); width: 100%; box-sizing: border-box; }
 footer p { font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: rgba(237,230,218,.28); letter-spacing: .06em; }
 
 /* Reveal */
